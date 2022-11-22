@@ -1,25 +1,16 @@
-import logo from './logo.svg';
-import './App.css';
-
+import React from "react";
+import { TrendingMovies } from "./components/TrendingMovies"
 function App() {
+  const API_KEY =  '?api_key=bdaaaa2b20c386f0be9d20b50bd8dbe3';
+  const BASE_URL = 'https://api.themoviedb.org/3/';
+  
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <TrendingMovies
+    url={BASE_URL}
+    apiKey={API_KEY}
+    />
+  )
 }
 
 export default App;
