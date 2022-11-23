@@ -1,10 +1,12 @@
 import React from "react";
 import { useState } from "react";
-
+import { useLocalStorage } from "../hooks/useLocalStorage";
 function useMovies(){
-    const API_KEY =  '?api_key=bdaaaa2b20c386f0be9d20b50bd8dbe3';
     const BASE_URL = 'https://api.themoviedb.org/3/';
-    const [ trendingMovies, setTrendingMovies ] = useState([])
+    const API_KEY =  '?api_key=bdaaaa2b20c386f0be9d20b50bd8dbe3';
+    const { getLikedMovies, updateLikedMovies } = useLocalStorage();
+    const [ trendingMovies, setTrendingMovies ] = useState(getLikedMovies);
+    const [ likedMovies, setLikedMovies ] = useState([]);
     React.useEffect(() => {
         const getTrendingMovies = async () => {
             const endpoint = 'trending/movie/day'
@@ -16,7 +18,18 @@ function useMovies(){
         getTrendingMovies()
             .catch(console.error)
     },[])
-    console.log(trendingMovies)
-    return { trendingMovies, setTrendingMovies }
+    
+    const likeMovie = (movie) => {
+        if(likedMovies.indexOf(movie) === -1){
+            const newArray = [...likedMovies];
+            newArray.push(movie)
+            setLikedMovies(newArray)
+            updateLikedMovies(newArray)
+        }
+    }
+    return { trendingMovies, 
+            setTrendingMovies,
+            likeMovie, 
+            likedMovies, }
 }
 export { useMovies }
