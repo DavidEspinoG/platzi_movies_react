@@ -1,0 +1,21 @@
+:root {
+    --grey: #3D3E44;
+    --dark-grey :#161616 ;
+    --white: #fff;
+    --dark-orange: #a1370a;
+}
+* {
+    box-sizing: border-box;
+}
+html {
+    font-size: 62.5%;
+    color: var(--white);
+    font-family: 'Be Vietnam Pro', sans-serif;
+}
+
+body {
+    background-color: var(--grey);
+}
+img {
+    max-width: 100%;
+}

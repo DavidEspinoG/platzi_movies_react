@@ -1,0 +1,14 @@
+.title-container {
+    background:linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('../img/background.jpeg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 31rem;
+    border-radius: 1rem;
+    padding-right:2rem;
+}
+h1 {
+    font-weight: 400;
+    font-size: 8rem;
+    text-align: right;
+}
