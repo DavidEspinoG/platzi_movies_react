@@ -1,0 +1,12 @@
+.movies-container {
+    display: flex;
+    overflow-x: scroll;
+}
+.movies-container img {
+    /* width: 30rem; */
+    height: 30rem; 
+    margin-right: 2rem;
+    border-radius: 1rem;
+    min-width: 20rem;
+    min-height: 10px;
+}

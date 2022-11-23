@@ -19,3 +19,14 @@ body {
 img {
     max-width: 100%;
 }
+h2 {
+    font-size:4rem ;
+}
+@media (max-width: 600px){
+    h1 {
+        font-size: 4rem;
+    }
+    h2 {
+        font-size: 3rem;
+    }
+}
