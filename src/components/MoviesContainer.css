@@ -26,13 +26,7 @@
 .btnLike::before {
     content: '🤍' ;
 }
-.btnLiked {
-    background-color:rgba(161, 55, 10,1) ;
-    box-shadow: 1px 1px 5px black;
-}
-.btnLiked::before {
-    content: '❤️' ;
-}
+
 .btnLiked {
     background-color:rgba(161, 55, 10,1) ;
     box-shadow: 1px 1px 5px black;

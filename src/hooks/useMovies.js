@@ -5,8 +5,8 @@ function useMovies(){
     const BASE_URL = 'https://api.themoviedb.org/3/';
     const API_KEY =  '?api_key=bdaaaa2b20c386f0be9d20b50bd8dbe3';
     const { getLikedMovies, updateLikedMovies } = useLocalStorage();
-    const [ trendingMovies, setTrendingMovies ] = useState(getLikedMovies);
-    const [ likedMovies, setLikedMovies ] = useState([]);
+    const [ trendingMovies, setTrendingMovies ] = useState([]);
+    const [ likedMovies, setLikedMovies ] = useState(getLikedMovies());
     React.useEffect(() => {
         const getTrendingMovies = async () => {
             const endpoint = 'trending/movie/day'
@@ -18,18 +18,31 @@ function useMovies(){
         getTrendingMovies()
             .catch(console.error)
     },[])
-    
+    const likedMoviesIds = likedMovies.map((movie)=> movie.id)
     const likeMovie = (movie) => {
-        if(likedMovies.indexOf(movie) === -1){
+        if(likedMoviesIds.indexOf(movie.id) === -1){
             const newArray = [...likedMovies];
             newArray.push(movie)
             setLikedMovies(newArray)
             updateLikedMovies(newArray)
+            console.log("react", likedMovies)
+            console.log("localStorage", getLikedMovies())
+        } else {
+            const newArray = [...likedMovies];
+            const index = likedMovies.indexOf(movie);
+            console.log(index)
+            newArray.splice(index, 1)
+            setLikedMovies(newArray);
+            updateLikedMovies(newArray);
+            console.log("react", likedMovies)
+            console.log("localStorage", getLikedMovies())
         }
     }
     return { trendingMovies, 
             setTrendingMovies,
             likeMovie, 
-            likedMovies, }
+            likedMovies,
+            likedMoviesIds
+    }
 }
 export { useMovies }

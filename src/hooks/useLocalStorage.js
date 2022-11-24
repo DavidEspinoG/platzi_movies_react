@@ -1,12 +1,13 @@
-
+import React from "react";
 function useLocalStorage() {
+    const [likedMoviesLocalStorage, setLikedMoviesLocalStorage] = React.useState('')
     const getLikedMovies = () => {
         const item = JSON.parse(localStorage.getItem('liked_movies'));
         let likedMovies; 
         if(item){
             likedMovies = item;
         } else {
-            likedMovies = []
+            likedMovies = [];
         }
         return likedMovies;
     }
@@ -18,4 +19,4 @@ function useLocalStorage() {
     return { getLikedMovies, updateLikedMovies }
 
 }
-export { useLocalStorage}
+export { useLocalStorage }
