@@ -27,7 +27,7 @@ function useMovies(){
         }
         saveLikedMovies(newArray)
         console.log(likedMovies)
-        console.log(index)
+        // console.log(index)
     }
     return {trendingMovies,
             likeMovie, 
