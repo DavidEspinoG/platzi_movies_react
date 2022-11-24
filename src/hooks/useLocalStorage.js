@@ -1,22 +1,26 @@
 import React from "react";
-function useLocalStorage() {
-    const [likedMoviesLocalStorage, setLikedMoviesLocalStorage] = React.useState('')
-    const getLikedMovies = () => {
-        const item = JSON.parse(localStorage.getItem('liked_movies'));
-        let likedMovies; 
-        if(item){
-            likedMovies = item;
+function useLocalStorage(itemName, initialValue) {
+    const [item, setItem] = React.useState(initialValue)
+    
+    React.useEffect(()=> {
+        const localStorageItem = localStorage.getItem(itemName);
+        let parsedItem; 
+        if(!localStorageItem){
+            localStorage.setItem(itemName, JSON.stringify(initialValue))
+            parsedItem = initialValue;
         } else {
-            likedMovies = [];
+            parsedItem = JSON.parse(localStorageItem);
         }
-        return likedMovies;
+        setItem(parsedItem);
+    }, []  )
+    const saveItem = (newItem) => {
+        const stringifiedItem = JSON.stringify(newItem);
+        localStorage.setItem(itemName, stringifiedItem);
+        setItem(newItem);
     }
-    const updateLikedMovies = (movies) => {
-        const item = JSON.stringify(movies)
-        localStorage.setItem('liked_movies', item)
-    }
+        
 
-    return { getLikedMovies, updateLikedMovies }
+    return { item, saveItem }
 
 }
 export { useLocalStorage }

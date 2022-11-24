@@ -4,9 +4,8 @@ import { useLocalStorage } from "../hooks/useLocalStorage";
 function useMovies(){
     const BASE_URL = 'https://api.themoviedb.org/3/';
     const API_KEY =  '?api_key=bdaaaa2b20c386f0be9d20b50bd8dbe3';
-    const { getLikedMovies, updateLikedMovies } = useLocalStorage();
+    const { item: likedMovies, saveItem: saveLikedMovies } = useLocalStorage('liked_moviesV1', [] );
     const [ trendingMovies, setTrendingMovies ] = useState([]);
-    const [ likedMovies, setLikedMovies ] = useState(getLikedMovies());
     React.useEffect(() => {
         const getTrendingMovies = async () => {
             const endpoint = 'trending/movie/day'
@@ -18,31 +17,21 @@ function useMovies(){
         getTrendingMovies()
             .catch(console.error)
     },[])
-    const likedMoviesIds = likedMovies.map((movie)=> movie.id)
     const likeMovie = (movie) => {
-        if(likedMoviesIds.indexOf(movie.id) === -1){
-            const newArray = [...likedMovies];
+        const index = likedMovies.findIndex((element) => element.id === movie.id)
+        const newArray = [...likedMovies];
+        if(index === -1){
             newArray.push(movie)
-            setLikedMovies(newArray)
-            updateLikedMovies(newArray)
-            console.log("react", likedMovies)
-            console.log("localStorage", getLikedMovies())
         } else {
-            const newArray = [...likedMovies];
-            const index = likedMovies.indexOf(movie);
-            console.log(index)
             newArray.splice(index, 1)
-            setLikedMovies(newArray);
-            updateLikedMovies(newArray);
-            console.log("react", likedMovies)
-            console.log("localStorage", getLikedMovies())
         }
+        saveLikedMovies(newArray)
+        console.log(likedMovies)
+        console.log(index)
     }
-    return { trendingMovies, 
-            setTrendingMovies,
+    return {trendingMovies,
             likeMovie, 
             likedMovies,
-            likedMoviesIds
     }
 }
 export { useMovies }
