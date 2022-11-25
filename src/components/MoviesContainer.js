@@ -5,7 +5,7 @@ import { useMovies } from "../hooks/useMovies";
 function MoviesContainer({ movies }){
     const navigate = useNavigate();
     const { likeMovie, likedMovies} = useMovies();
-
+    
     return (
         <div className="movies-container">
             {movies.map((movie) =>
@@ -14,7 +14,6 @@ function MoviesContainer({ movies }){
                         key={movie.id} 
                     
                         >
-                        {/* <Link to={`detail/${movie.id}`} > */}
                         <img 
                             onClick={() => {
                                 navigate('/detail', {state: {movie: movie}})
@@ -29,6 +28,7 @@ function MoviesContainer({ movies }){
                         onClick={() => 
                             {
                             likeMovie(movie)
+                            navigate('/');
                             }}
                         ></button>
                     </div>
