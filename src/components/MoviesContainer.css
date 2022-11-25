@@ -12,6 +12,9 @@
 .movie-container {
     position: relative;
 }
+.movie-container:hover {
+    cursor:pointer;
+}
 .btnLike {
     position: absolute;
     width: 50px;
@@ -22,7 +25,9 @@
     border: none;
     border-radius: 50%;
 }
-
+.btnLike:hover {
+    cursor: pointer;
+}
 .btnLike::before {
     content: '🤍' ;
 }

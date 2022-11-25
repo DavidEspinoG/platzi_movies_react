@@ -1,17 +1,18 @@
 import React from "react";
 import { MainTitle } from "../components/MainTitle";
 import { TrendingMovies } from "../components/TrendingMovies";
+import { MainContainer } from "../components/MainContainer";
 import "./HomePage.css";
 import img from "../img/background.jpeg"
 function HomePage() {
     return (
-        <main className="main-container">
+        <MainContainer className="main-container">
             <MainTitle
                 title='movieApp'
                 img={img}
             />
             <TrendingMovies/>
-        </main>
+        </MainContainer>
     )
 }
 export { HomePage }
