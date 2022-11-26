@@ -1,0 +1,38 @@
+.flex-form {
+    display: flex;
+    justify-content: space-evenly;
+    gap: 1rem;
+}
+.search-form input {
+    display: inline-block;
+    border-radius: 1rem;
+    border: none;
+    padding: 1rem;
+    flex: 80%;
+    font-size: 2rem;
+}
+.search-form button {
+    background-color: var(--dark-orange);
+    border: none;
+    color: white;
+    padding: 1rem; 
+    border-radius: 1rem;
+    font-size: 2rem;
+    flex: 20%;
+    /* width: 10rem; */
+}
+@media(max-width: 600px) {
+    .search-form input {
+        padding: .5rem;
+        font-size: 1.5rem;
+    }
+    .search-form button {
+        font-size: 1.5rem;
+    }
+}
+.search-form button:hover {
+    cursor: pointer;
+}
+.search-results {
+    margin-top: 2rem;
+}

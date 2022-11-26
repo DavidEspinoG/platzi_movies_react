@@ -6,7 +6,8 @@ import { MainContainer } from "../components/MainContainer";
 import { LikedMovies } from "../components/LikedMovies";
 import { MovieContext } from "../hooks/MovieProvider";
 import "./HomePage.css";
-import img from "../img/background.jpeg"
+import img from "../img/background.jpeg";
+import { Search } from "../components/Search";
 function HomePage() {
     const { likedMovies } = useContext(MovieContext);
     return (
@@ -15,11 +16,11 @@ function HomePage() {
                 title='movieApp'
                 img={img}
             />
+            <Search/>
             <TrendingMovies/>
             <LikedMovies
                 movies={likedMovies}
             />
-
         </MainContainer>
     )
 }

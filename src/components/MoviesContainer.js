@@ -6,9 +6,6 @@ import { MovieContext } from "../hooks/MovieProvider";
 function MoviesContainer({ movies }){
     const navigate = useNavigate();
     const { likeMovie, likedMovies} = useContext(MovieContext);
-    React.useEffect(() => {
-        console.log('movies container',likedMovies)
-    })
     return (
         <div className="movies-container">
             {movies.map((movie) =>
