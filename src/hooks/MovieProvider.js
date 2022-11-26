@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
 import { createContext } from "react";
+import { useLocalStorage } from "./useLocalStorage";
 const MovieContext = createContext()
 function MovieProvider(props){
     const BASE_URL = 'https://api.themoviedb.org/3/';
     const API_KEY =  '?api_key=bdaaaa2b20c386f0be9d20b50bd8dbe3';
-    // const { item: localStorageLikedMovies, saveItem: saveLocalStorageLikedMovies } = useLocalStorage('liked_moviesV1', [] );
-    const [ likedMovies, setLikedMovies ] = useState([])
+    const { item: likedMovies, saveItem: setLikedMovies } = useLocalStorage('liked_moviesV1', [] );
+    // const [ likedMovies, setLikedMovies ] = useState([])
     const [ trendingMovies, setTrendingMovies ] = useState([]);
     useEffect(() => {
         const getTrendingMovies = async () => {

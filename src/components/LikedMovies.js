@@ -5,7 +5,8 @@ import { MoviesContainer } from "./MoviesContainer";
 function LikedMovies({movies}){
     return (
         <SecondaryContainer>
-            <h2>Liked Movies</h2>
+            {movies.length > 0 && <h2>Liked Movies</h2>}
+            
             <MoviesContainer
                 movies={movies}
             />
