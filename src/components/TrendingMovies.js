@@ -1,8 +1,9 @@
 import React from "react";
+import { useContext } from "react";
 import { MoviesContainer } from "./MoviesContainer";
-import { useMovies } from "../hooks/useMovies";
+import { MovieContext } from "../hooks/MovieProvider";
 function TrendingMovies() {
-  const { trendingMovies } = useMovies();
+  const { trendingMovies } = useContext(MovieContext);
   return (
     <section className="secondary-container">
       <h2>Trending Movies</h2>

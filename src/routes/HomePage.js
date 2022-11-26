@@ -1,13 +1,14 @@
 import React from "react";
+import { useContext } from "react";
 import { MainTitle } from "../components/MainTitle";
 import { TrendingMovies } from "../components/TrendingMovies";
 import { MainContainer } from "../components/MainContainer";
 import { LikedMovies } from "../components/LikedMovies";
-import { useMovies } from "../hooks/useMovies";
+import { MovieContext } from "../hooks/MovieProvider";
 import "./HomePage.css";
 import img from "../img/background.jpeg"
 function HomePage() {
-    const { likedMovies } = useMovies();
+    const { likedMovies } = useContext(MovieContext);
     return (
         <MainContainer className="main-container">
             <MainTitle

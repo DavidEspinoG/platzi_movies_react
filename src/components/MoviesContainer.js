@@ -1,11 +1,14 @@
 import React from "react";
 import {  useNavigate } from "react-router-dom";
 import "./MoviesContainer.css"; 
-import { useMovies } from "../hooks/useMovies";  
+import { useContext } from "react";
+import { MovieContext } from "../hooks/MovieProvider";  
 function MoviesContainer({ movies }){
     const navigate = useNavigate();
-    const { likeMovie, likedMovies} = useMovies();
-    
+    const { likeMovie, likedMovies} = useContext(MovieContext);
+    React.useEffect(() => {
+        console.log('movies container',likedMovies)
+    })
     return (
         <div className="movies-container">
             {movies.map((movie) =>
