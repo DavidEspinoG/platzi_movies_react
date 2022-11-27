@@ -1,0 +1,14 @@
+.category-container {
+    white-space: nowrap;
+    overflow-x: auto;
+}
+.category {
+    background-color: var(--dark-orange);
+    display: inline-block;
+    font-size: 2.7rem;
+    margin: 2rem;
+    text-align: center;
+    
+    padding: 3rem;
+    border-radius: 1rem;
+}

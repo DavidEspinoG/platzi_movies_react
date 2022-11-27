@@ -8,6 +8,7 @@ import { MovieContext } from "../hooks/MovieProvider";
 import "./HomePage.css";
 import img from "../img/background.jpeg";
 import { Search } from "../components/Search";
+import { Categories } from "../components/Categories";
 function HomePage() {
     const { likedMovies } = useContext(MovieContext);
     return (
@@ -21,6 +22,7 @@ function HomePage() {
             <LikedMovies
                 movies={likedMovies}
             />
+            <Categories/>
         </MainContainer>
     )
 }

@@ -1,4 +1,3 @@
-import React, { useEffect } from "react";
 import { SecondaryContainer } from "./SecondaryContainer";
 import { MoviesContainer } from "./MoviesContainer";
 import { MovieContext } from "../hooks/MovieProvider";
@@ -6,9 +5,6 @@ import { useContext } from "react";
 import "./Search.css";
 function Search(){
     const { searchedMovies, setQuery, query, getSearchResult } = useContext(MovieContext);
-    useEffect(()=>{
-        console.log(searchedMovies);
-    }, [searchedMovies])
     return ( 
         <>
         <SecondaryContainer>

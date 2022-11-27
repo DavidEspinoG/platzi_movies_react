@@ -9,6 +9,8 @@ function MovieProvider(props){
     const [ trendingMovies, setTrendingMovies ] = useState([]);
     const [query, setQuery] = useState('');
     const [searchedMovies, setSearchMovies] = useState([]);
+    const [categories, setCategories] = useState([]);
+    
     useEffect(() => {
         const getTrendingMovies = async () => {
             try{
@@ -27,8 +29,9 @@ function MovieProvider(props){
             try{
                 const endpoint = 'genre/movie/list'
                 const res = await fetch(BASE_URL + endpoint + API_KEY)
-                const categories = await res.json()
-                console.log(categories)
+                const data = await res.json();
+                const categories = data.genres;
+                setCategories(categories);
             } catch(error) {console.log(error)}
         }
         getCategories()
@@ -39,7 +42,6 @@ function MovieProvider(props){
             const endpoint = 'search/movie'
             const res = await fetch(BASE_URL + endpoint + API_KEY + '&query=' + query);
             const data = await res.json(); 
-            // console.log(query)
             setSearchMovies(data.results)
         } catch(error) {
             console.log(error)
@@ -63,7 +65,8 @@ function MovieProvider(props){
                 likeMovie,
                 setQuery, 
                 searchedMovies, 
-                getSearchResult
+                getSearchResult,
+                categories
             }}
         >
             {props.children}
