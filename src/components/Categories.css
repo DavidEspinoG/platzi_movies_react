@@ -12,3 +12,7 @@
     padding: 3rem;
     border-radius: 1rem;
 }
+
+.category-container a {
+    color: white;
+}

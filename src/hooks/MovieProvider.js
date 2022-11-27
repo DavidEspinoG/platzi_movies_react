@@ -4,18 +4,18 @@ import { useLocalStorage } from "./useLocalStorage";
 const MovieContext = createContext()
 function MovieProvider(props){
     const BASE_URL = 'https://api.themoviedb.org/3/';
-    const API_KEY =  '?api_key=bdaaaa2b20c386f0be9d20b50bd8dbe3';
+    const API_KEY =  'bdaaaa2b20c386f0be9d20b50bd8dbe3';
     const { item: likedMovies, saveItem: setLikedMovies } = useLocalStorage('liked_moviesV1', [] );
     const [ trendingMovies, setTrendingMovies ] = useState([]);
-    const [query, setQuery] = useState('');
-    const [searchedMovies, setSearchMovies] = useState([]);
-    const [categories, setCategories] = useState([]);
-    
+    const [ query, setQuery ] = useState('');
+    const [ searchedMovies, setSearchMovies ] = useState([]);
+    const [ categories, setCategories ] = useState([]);
+    const [ moviesByCategory, setMoviesByCategory ] = useState([])
     useEffect(() => {
         const getTrendingMovies = async () => {
             try{
                 const endpoint = 'trending/movie/day'
-                const res = await fetch(BASE_URL + endpoint + API_KEY)
+                const res = await fetch(BASE_URL + endpoint + '?api_key=' + API_KEY)
                 const data = await res.json()
                 const movies = data.results;
                 setTrendingMovies(movies)
@@ -28,7 +28,7 @@ function MovieProvider(props){
         const getCategories = async () => {
             try{
                 const endpoint = 'genre/movie/list'
-                const res = await fetch(BASE_URL + endpoint + API_KEY)
+                const res = await fetch(BASE_URL + endpoint + '?api_key=' + API_KEY)
                 const data = await res.json();
                 const categories = data.genres;
                 setCategories(categories);
@@ -37,10 +37,17 @@ function MovieProvider(props){
         getCategories()
             .catch(console.error)
     },[]);
+    const getMoviesByCategory = async (category) => {
+        const endpoint = 'discover/movie?with_genres='
+        const res = await fetch(BASE_URL + endpoint + category + '&api_key=' + API_KEY);
+        const data = await res.json(); 
+        // console.log(data.results)
+        setMoviesByCategory(data.results);
+    }
     const getSearchResult = async () => {
         try {
             const endpoint = 'search/movie'
-            const res = await fetch(BASE_URL + endpoint + API_KEY + '&query=' + query);
+            const res = await fetch(BASE_URL + endpoint + '?api_key='+ API_KEY + '&query=' + query);
             const data = await res.json(); 
             setSearchMovies(data.results)
         } catch(error) {
@@ -66,7 +73,9 @@ function MovieProvider(props){
                 setQuery, 
                 searchedMovies, 
                 getSearchResult,
-                categories
+                categories, 
+                getMoviesByCategory,
+                moviesByCategory
             }}
         >
             {props.children}

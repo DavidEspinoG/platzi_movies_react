@@ -12,7 +12,6 @@ function MoviesContainer({ movies }){
                     <div 
                         className="movie-container" 
                         key={movie.id} 
-                    
                         >
                         <img 
                             onClick={() => {
