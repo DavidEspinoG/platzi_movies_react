@@ -11,9 +11,9 @@ function Categories() {
             <h2>Categories</h2>
             <div className="category-container">
                 {categories.map((category)=> (
-                    <div key={category.id} className="category" onClick={async () => {
+                    <div key={category.id} className="category" onClick={ async () => {
                         await getMoviesByCategory(category.id)
-                        navigate('/categoryDetail', {state: {category_name: category.name}})
+                        navigate(`/categoryDetail/${category.name}`, {state: {category_name: category.name}})
                     }} >{category.name}</div>
                 ))}
             </div>

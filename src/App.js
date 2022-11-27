@@ -9,7 +9,7 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage/>}/>
         <Route path="/detail" element={<MovieDetail/>}/>
-        <Route path="/categoryDetail" element={<CategoryDetail/>}/>
+        <Route path="/categoryDetail/:category_name" element={<CategoryDetail/>}/>
         <Route path="*" element={<p>Not found</p>}/>
       </Routes>
     </HashRouter>
