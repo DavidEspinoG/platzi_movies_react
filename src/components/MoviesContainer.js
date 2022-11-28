@@ -20,8 +20,7 @@ function MoviesContainer({ movies }){
                             src={'https://image.tmdb.org/t/p/w300' + movie.poster_path}
                             alt={movie.title}>
                         </img>
-                        {/* </Link> */}
-                        <button 
+                        <button
                         className={`btnLike${likedMovies.findIndex((element) => 
                             element.id === movie.id) !== -1 ? ' btnLiked' : '' }`}
                         onClick={() => 

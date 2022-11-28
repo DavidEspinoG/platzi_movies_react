@@ -5,12 +5,14 @@ const MovieContext = createContext()
 function MovieProvider(props){
     const BASE_URL = 'https://api.themoviedb.org/3/';
     const API_KEY =  'bdaaaa2b20c386f0be9d20b50bd8dbe3';
+    // const categoryLocalStorage = JSON.parse(localStorage.getItem('category')) 
     const { item: likedMovies, saveItem: setLikedMovies } = useLocalStorage('liked_moviesV1', [] );
+    const { item: moviesByCategory, saveItem: setMoviesByCategory } = useLocalStorage('category', [] );
     const [ trendingMovies, setTrendingMovies ] = useState([]);
     const [ query, setQuery ] = useState('');
     const [ searchedMovies, setSearchMovies ] = useState([]);
     const [ categories, setCategories ] = useState([]);
-    const [ moviesByCategory, setMoviesByCategory ] = useState([])
+    // const [ moviesByCategory, setMoviesByCategory ] = useState( [])
     useEffect(() => {
         const getTrendingMovies = async () => {
             try{
@@ -41,7 +43,10 @@ function MovieProvider(props){
         const endpoint = 'discover/movie?with_genres='
         const res = await fetch(BASE_URL + endpoint + category + '&api_key=' + API_KEY);
         const data = await res.json(); 
-        // console.log(data.results)
+        // const stringified = JSON.stringify(data.results)
+        // const parsed = JSON.parse(stringified)
+        // console.log(parsed)
+        // localStorage.setItem('category', JSON.stringify(data.results));
         setMoviesByCategory(data.results);
     }
     const getSearchResult = async () => {
