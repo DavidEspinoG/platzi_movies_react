@@ -7,6 +7,7 @@ const StyledButton = styled.button`
     border: none;
     padding: 1.9rem;
     border-radius: 10px;
+    margin-top: 20px;
     font-size: 1.5rem;
     text-decoration: none;
     &:hover {
@@ -16,7 +17,7 @@ const StyledButton = styled.button`
 
 function Button(props){
     return (
-        <Link to="/">
+        <Link to={props.to}>
             <StyledButton>
                 {props.children}
             </StyledButton>

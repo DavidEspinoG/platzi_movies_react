@@ -23,7 +23,7 @@ function MovieDetail() {
                 <h2>{movie.title}</h2>
                 <StyledP>{movie.overview}</StyledP>
                 <StyledP>Release date: {movie.release_date}</StyledP>
-                <Button>Back</Button>
+                <Button to='/'>Back</Button>
             </SecondaryContainer>
         </MainContainer>
     )

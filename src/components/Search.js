@@ -9,7 +9,11 @@ function Search(){
         <>
         <SecondaryContainer>
             <h2>Search</h2>
-            <form className="search-form">
+            <form className="search-form" 
+                onSubmit={(e)=>{
+                    e.preventDefault()
+                    getSearchResult(query)
+                }}>
                 <div className="flex-form">
                     <input 
                         type="text" 
@@ -19,11 +23,7 @@ function Search(){
                             setQuery(event.target.value)
                         }}
                         />
-                    <button
-                        onClick={() => {
-                            getSearchResult(query)
-                        }}
-                        type="button" >Search</button>
+                    <button type="submit" >Search</button>
                 </div>
             </form>
             
