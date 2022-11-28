@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/curso-intro-react/static/css/main.b8e506b8.css",
-    "main.js": "/curso-intro-react/static/js/main.2b806e00.js",
-    "static/media/background.jpeg": "/curso-intro-react/static/media/background.89afef36df385837e1ad.jpeg",
-    "index.html": "/curso-intro-react/index.html",
-    "main.b8e506b8.css.map": "/curso-intro-react/static/css/main.b8e506b8.css.map",
-    "main.2b806e00.js.map": "/curso-intro-react/static/js/main.2b806e00.js.map"
+    "main.css": "/platzi_movies_react/static/css/main.b8e506b8.css",
+    "main.js": "/platzi_movies_react/static/js/main.de9ca9e6.js",
+    "static/media/background.jpeg": "/platzi_movies_react/static/media/background.89afef36df385837e1ad.jpeg",
+    "index.html": "/platzi_movies_react/index.html",
+    "main.b8e506b8.css.map": "/platzi_movies_react/static/css/main.b8e506b8.css.map",
+    "main.de9ca9e6.js.map": "/platzi_movies_react/static/js/main.de9ca9e6.js.map"
   },
   "entrypoints": [
     "static/css/main.b8e506b8.css",
-    "static/js/main.2b806e00.js"
+    "static/js/main.de9ca9e6.js"
   ]
 }
