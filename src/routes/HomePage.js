@@ -14,7 +14,7 @@ function HomePage() {
     return (
         <MainContainer className="main-container">
             <MainTitle
-                title='movieApp'
+                title='platziMoviesApp'
                 img={img}
             />
             <Search/>
